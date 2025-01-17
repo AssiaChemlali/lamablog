@@ -15,8 +15,5 @@ export const links=[
     href:"/about",
     label:"about"
   },
-  {
-    href:"/login",
-    label:"login"
-  },
+
 ]
