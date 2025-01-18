@@ -7,7 +7,9 @@ import Trending from './pages/Trending'
 import MostPopular from './pages/MostPopular'
 import About from './pages/About'
 import Login from './pages/Login'
-
+import PostList from './pages/PostList'
+import Write from './pages/Write'
+import Register from './pages/Register'
 function App() {
   return (
     <>
@@ -16,10 +18,14 @@ function App() {
       </div>
       <Routes>
           <Route path ="/" element={<Home/>}/>
+          <Route path ="/posts" element={<PostList/>}/>
+          <Route path ="/:slug" element={<PostList/>}/>
+          <Route path ="/write" element={<Write/>}/>
+          <Route path ="/login" element={<Login/>}/>
+          <Route path ="/register" element={<Register/>}/>
           <Route path ="/trending" element={<Trending/>}/>
           <Route path ="/mostPopular" element={<MostPopular/>}/>
           <Route path ="/about" element={<About/>}/>
-          <Route path ="/login" element={<Login/>}/>
       </Routes>
 
      </>
