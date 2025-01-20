@@ -10,22 +10,26 @@ import Login from './pages/Login'
 import PostList from './pages/PostList'
 import Write from './pages/Write'
 import Register from './pages/Register'
+import SinglePost from './pages/SinglePost'
+import MainLayout from './components/MainLayout'
 function App() {
   return (
     <>
-      <div className='px-4 md:px-8 xl:px-32 2xl:px-64'>
+      {/* <div className='px-4 md:px-8 xl:px-32 2xl:px-64'>
         <Navbar/>
-      </div>
+      </div> */}
       <Routes>
-          <Route path ="/" element={<Home/>}/>
-          <Route path ="/posts" element={<PostList/>}/>
-          <Route path ="/:slug" element={<PostList/>}/>
-          <Route path ="/write" element={<Write/>}/>
-          <Route path ="/login" element={<Login/>}/>
-          <Route path ="/register" element={<Register/>}/>
-          <Route path ="/trending" element={<Trending/>}/>
-          <Route path ="/mostPopular" element={<MostPopular/>}/>
-          <Route path ="/about" element={<About/>}/>
+          <Route  element={<MainLayout/>}>
+            <Route path ="/" element={<Home/>}/>
+            <Route path ="/posts" element={<PostList/>}/>
+            <Route path ="/:slug" element={<SinglePost/>}/>
+            <Route path ="/write" element={<Write/>}/>
+            <Route path ="/login" element={<Login/>}/>
+            <Route path ="/register" element={<Register/>}/>
+            <Route path ="/trending" element={<Trending/>}/>
+            <Route path ="/mostPopular" element={<MostPopular/>}/>
+            <Route path ="/about" element={<About/>}/>
+          </Route>
       </Routes>
 
      </>
