@@ -5,6 +5,7 @@ import { IoClose } from "react-icons/io5";
 import {links} from '../lib/index.js'
 import { Link } from "react-router";
 import Image from './Image.jsx';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 const Navbar = () => {
 
   const [open,setOpen]=useState(false)
@@ -35,16 +36,25 @@ const Navbar = () => {
                 </div>
               )
             })}
-            <Link 
+
+          <SignedOut>
+          <Link 
               className='py-2 px-4 rounded-full bg-blue-800 text-white '
               to="/login" >login 👋</Link>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+           
 
       </nav>
 
       <div className='md:hidden cursor-pointer text-2xl ' 
         onClick={()=>setOpen(prev=>!prev)}>
         {open ? <IoClose />:<IoMdMenu />}
-        </div>
+      </div>
+
+    
 
     </div>
 
