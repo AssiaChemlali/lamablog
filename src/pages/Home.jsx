@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import MainCategories from '../components/MainCategories'
+import FeaturedPosts from '../components/FeaturedPosts'
 const Home = () => {
   return (
     <div className='mt-4 flex flex-col gap-4'>
@@ -59,6 +60,7 @@ const Home = () => {
       {/* categories */}
       <MainCategories/>
       {/* features posts */}
+      <FeaturedPosts/>
       {/* post list */}
     </div>
   )
