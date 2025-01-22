@@ -12,3 +12,10 @@ body{
 .animatedButton{
   
 }
+
+.ql-toolbar.ql-snow{
+  border:none !important
+}
+.ql-editor{
+  border:none !important
+}
