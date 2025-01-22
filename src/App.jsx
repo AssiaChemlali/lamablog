@@ -7,7 +7,7 @@ import Trending from './pages/Trending'
 import MostPopular from './pages/MostPopular'
 import About from './pages/About'
 import Login from './pages/Login'
-import PostList from './pages/PostList'
+import Posts from './pages/Posts'
 import Write from './pages/Write'
 import Register from './pages/Register'
 import SinglePost from './pages/SinglePost'
@@ -21,7 +21,7 @@ function App() {
       <Routes>
           <Route  element={<MainLayout/>}>
             <Route path ="/" element={<Home/>}/>
-            <Route path ="/posts" element={<PostList/>}/>
+            <Route path ="/posts" element={<Posts/>}/>
             <Route path ="/:slug" element={<SinglePost/>}/>
             <Route path ="/write" element={<Write/>}/>
             <Route path ="/login" element={<Login/>}/>

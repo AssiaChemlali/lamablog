@@ -5,6 +5,7 @@ import { CATEGORIES } from '../lib'
 import Search from '../components/Search'
 import PostMenuAction from '../components/PostMenuAction'
 import Comments from '../components/Comments'
+import Categries from './Categries'
 const SinglePost = () => {
   return (
 
@@ -69,16 +70,8 @@ const SinglePost = () => {
        {/* categories */}
        <div className='flex flex-col'>
         <h5 className='font-bold capitalize mb-2'>categories</h5>
-        <ul className='flex flex-col gap-3'>
-          {CATEGORIES.map((cat,index)=>{
-            return(
-               <Link to={cat.href} className='underline capitalize font-semibold text-sm' key={index}>
-              {cat.label}
-              </Link>
-            )
-          })}
-         
-        </ul>
+       
+        <Categries/>
 
        </div>
 
@@ -88,6 +81,7 @@ const SinglePost = () => {
        <Search/>
 
        </div>
+       
       </div>
     </div>
     {/* comments */}
