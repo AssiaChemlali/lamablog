@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import Image from '../components/Image'
 import { CATEGORIES } from '../lib'
 import Search from '../components/Search'
+import PostMenuAction from '../components/PostMenuAction'
 const SinglePost = () => {
   return (
 
@@ -33,43 +34,36 @@ const SinglePost = () => {
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, in recusandae a rem ipsum quos minus enim quas odit, eveniet ad, repudiandae fugit. Voluptas asperiores, accusantium aliquam esse sequi omnis illum vitae repudiandae accusamus similique quam? A, voluptatibus in. Incidunt minus cupiditate inventore odio quis a omnis cum facere deserunt.</p>
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, in recusandae a rem ipsum quos minus enim quas odit, eveniet ad, repudiandae fugit. Voluptas asperiores, accusantium aliquam esse sequi omnis illum vitae repudiandae accusamus similique quam? A, voluptatibus in. Incidunt minus cupiditate inventore odio quis a omnis cum facere deserunt.</p>
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, in recusandae a rem ipsum quos minus enim quas odit, eveniet ad, repudiandae fugit. Voluptas asperiores, accusantium aliquam esse sequi omnis illum vitae repudiandae accusamus similique quam? A, voluptatibus in. Incidunt minus cupiditate inventore odio quis a omnis cum facere deserunt.</p>
+         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut, suscipit ab. Culpa eaque magni exercitationem nemo voluptatibus numquam eveniet, quibusdam, alias unde, accusamus harum architecto laboriosam. Soluta cum sit nulla esse architecto repellendus labore doloremque rem impedit! Ad quo eos corrupti, earum officiis hic ab vero provident, at pariatur molestias numquam sint? Ut reiciendis sint labore! Ab corporis, fugit, adipisci dolores molestias blanditiis, quam dolore saepe nemo fugiat exercitationem cumque maiores iste minus quod vero in sint repellendus a voluptate?</p>
       </div>
 
-      <div className='flex flex-col gap-8 lg:w-1/5'>
+       {/* sidebar */}
+      <div className='px-4 h-max sticky top-8  flex flex-col gap-8 lg:w-1/5'>
       {/* author */}
-       <div className=' flex flex-col gap-2'>
+       <div className='flex flex-col gap-2'>
         <h5 className='font-bold capitalize'>author</h5>
         <div className='flex  items-center gap-4'>
-          <Image path="assets/userImg.jpeg" className="rounded-full object-cover" w="50" h="50"/>
-          <p className='font-semibold'>Jhon Doe</p>
+          <Image path="assets/userImg.jpeg" className="w-12 h-12 rounded-full object-cover" w="50" h="50"/>
+          <p className='font-semibold text-blue-800'>Jhon Doe</p>
         </div>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <p className='text-sm text-gray-500'>Lorem ipsum dolor sit amet.</p>
         <ul className='flex gap-1'>
           <Link to="#">
-          <Image path="assets/instagram.svg" className=" object-cover" />
+            <Image 
+            path="assets/instagram.svg" 
+            className=" object-cover" />
           </Link>
           <Link to="#">
-          <Image path="assets/facebook.svg" className=" object-cover" />
+            <Image 
+            path="assets/facebook.svg" 
+            className=" object-cover" />
           </Link>
         </ul>
 
        </div>
 
        {/* actions */}
-       <div className=' flex flex-col'>
-        <h5 className='font-bold capitalize mb-2'>actions</h5>
-        <ul className='flex flex-col gap-3'>
-          <Link to="#" className='flex gap-1'>
-          <Image path="assets/delete.svg" className=" object-cover" />
-          <p className='text-sm'>Save this post</p>
-          </Link>
-          <Link to="#" className='flex gap-1'>
-          <Image path="assets/delete.svg" className=" object-cover"  w="20" h="10"/>
-          <p className='text-sm'>Delete this post</p>
-          </Link>
-        </ul>
-
-       </div>
+       <PostMenuAction/>
 
        {/* categories */}
        <div className='flex flex-col'>
@@ -83,7 +77,6 @@ const SinglePost = () => {
             )
           })}
          
-         
         </ul>
 
        </div>
@@ -91,9 +84,6 @@ const SinglePost = () => {
        {/* search */}
        <div className='flex flex-col'>
         <h5 className='font-bold capitalize mb-2'>search</h5>
-        
-         
-         
        <Search/>
 
        </div>
