@@ -4,7 +4,9 @@ import { Link } from 'react-router'
 const ArticleItem = ({imagePath}) => {
   return (
     <article className='lg:h-1/3 flex justify-between gap-4'>
-    <Image path={imagePath} className="rounded-3xl w-1/3 object-cover aspect-video"/>
+      <div className='w-1/3 aspect-video'>
+        <Image path={imagePath} className="rounded-3xl object-cover w-full h-full" w="298"/>
+      </div>
     <div className='w-2/3 flex flex-col gap-2'>
       <p className='flex items-center gap-4 text-sm  lg:text-base '>
           <span className='font-semibold lg:text-lg'>01,</span>

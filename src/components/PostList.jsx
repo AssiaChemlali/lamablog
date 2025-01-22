@@ -3,15 +3,19 @@ import Image from './Image'
 import { Link } from 'react-router'
 const PostList = () => {
   return (
-    <article className=' flex flex-col md:flex-row gap-4 items-center'>
-    <Image path="assets/postImg.jpeg" className="rounded-3xl w-full md:w-1/2"/>
-    <div className='w-full md:w-1/2 flex flex-col gap-3'>
-      <h2 className='text-xl  font-bold md:text-2xl lg:text-3xl'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-      <div className=' text-gray-500 flex gap-3 text-sm '>
+    <article className=' flex flex-col xl:flex-row gap-8 items-center'>
+      <div className='md:hidden xl:block xl:w-1/3'>
+          <Image path="assets/postImg.jpeg" className="rounded-3xl w-full  object-cover" w="700"/>
+      </div>
+    
+
+    <div className='w-full  flex flex-col gap-3 xl:w-2/3'>
+      <Link to="/test" className='text-xl  font-bold md:text-2xl lg:text-3xl'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Link>
+      <div className=' flex items-center text-gray-400  gap-2 text-sm '>
         <span>written by</span>
-        <Link className='font-bold'>Jhon Doe</Link>
+        <Link className='text-blue-800'>Jhon Doe</Link>
         <span>on</span>
-        <Link className='font-bold' to='/posts?cat=web-design'>web design</Link>
+        <Link className='text-blue-800' to='/posts?cat=web-design'>web design</Link>
         <span>2 days ago</span>
       </div>
       <p className=''>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam placeat eveniet culpa consequatur ad atque enim itaque totam ex porro?</p>

@@ -8,7 +8,7 @@ const FeaturedPosts = () => {
     <div className='flex flex-col lg:flex-row gap-4  py-5'>
      
       <article className='w-full lg:w-1/2 flex flex-col gap-4'>
-        <Image path="assets/featured1.jpeg" className="rounded-3xl object-cover"/>
+        <Image path="assets/featured1.jpeg" className="rounded-3xl object-cover" w="895"/>
 
         <p className='flex items-center gap-4 text-sm '>
           <span className='font-semibold lg:text-lg'>01,</span>

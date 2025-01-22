@@ -10,7 +10,10 @@ const Image = ({path,className,w,h,alt}) => {
     height={h}
     loading='lazy'
     lqip={{ active: true, quality: 20 }}
-
+      transformation={[{
+        width:w,
+        height:h,
+      }]}
     className={className}/>
   )
 }
