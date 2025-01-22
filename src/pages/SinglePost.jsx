@@ -4,6 +4,7 @@ import Image from '../components/Image'
 import { CATEGORIES } from '../lib'
 import Search from '../components/Search'
 import PostMenuAction from '../components/PostMenuAction'
+import Comments from '../components/Comments'
 const SinglePost = () => {
   return (
 
@@ -89,6 +90,8 @@ const SinglePost = () => {
        </div>
       </div>
     </div>
+    {/* comments */}
+    <Comments/>
 
  </div>
 
