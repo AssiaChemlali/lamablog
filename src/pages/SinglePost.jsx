@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import Image from '../components/Image'
+import { CATEGORIES } from '../lib'
+import Search from '../components/Search'
 const SinglePost = () => {
   return (
 
@@ -73,11 +75,26 @@ const SinglePost = () => {
        <div className='flex flex-col'>
         <h5 className='font-bold capitalize mb-2'>categories</h5>
         <ul className='flex flex-col gap-3'>
-          <Link to="#" className=''>
-              Save this post
-          </Link>
+          {CATEGORIES.map((cat,index)=>{
+            return(
+               <Link to={cat.href} className='underline capitalize font-semibold text-sm' key={index}>
+              {cat.label}
+              </Link>
+            )
+          })}
+         
          
         </ul>
+
+       </div>
+
+       {/* search */}
+       <div className='flex flex-col'>
+        <h5 className='font-bold capitalize mb-2'>search</h5>
+        
+         
+         
+       <Search/>
 
        </div>
       </div>
