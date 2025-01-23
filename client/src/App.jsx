@@ -15,9 +15,7 @@ import MainLayout from './components/MainLayout'
 function App() {
   return (
     <>
-      {/* <div className='px-4 md:px-8 xl:px-32 2xl:px-64'>
-        <Navbar/>
-      </div> */}
+ 
       <Routes>
           <Route  element={<MainLayout/>}>
             <Route path ="/" element={<Home/>}/>
