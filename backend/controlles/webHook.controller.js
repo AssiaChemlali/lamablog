@@ -19,11 +19,18 @@ export const cleckWebHook=async (req,res)=>{
       });
   }
 
-  console.log(evt.data)
+  // console.log(evt.data)
   if (evt.type === 'user.created') {
     const newUser=new User({
-      cleckUserId:evt.data.id
+      cleckUserId:evt.data.id,
+      username:evt.data.username || evt.data.email_addresses[0],
+      email:evt.data.email_addresses[0],
+      img:evt.profile_img_url
     })
+    await newUser.save()
   }
+  return res.status(200).json({
+    message:"webhook is receite"
+  })
 
 }
