@@ -5,7 +5,7 @@ import postRouter from "./routes/post.route.js"
 import commentRouter from "./routes/comment.route.js"
 import connectDB from './lib/connectDB.js'
 import webHookRouter from './routes/webHoook.js'
-import { clerkMiddleware } from '@clerk/express'
+import { clerkMiddleware, requireAuth } from '@clerk/express'
 
 
 
@@ -19,13 +19,17 @@ app.use(express.json())
 //   res.json(authState)
 // })
 
-app.get("/protect",(req,res)=>{
-  const {userId}=res.auth;
-  if(!userId){
-    return res.status(401).json("not authentificated")
-  }
-  res.status(200).json("content")
-})
+// app.get("/protect",(req,res)=>{
+//   const {userId}=res.auth;
+//   if(!userId){
+//     return res.status(401).json("not authentificated")
+//   }
+//   res.status(200).json("content")
+// })
+
+// app.get("/protect2",requireAuth(),(req,res)=>{
+//   res.status(200).json("content")
+// })
 
 app.use('/users',userRouter)
 app.use('/posts',postRouter)
@@ -51,4 +55,4 @@ app.listen(3100,()=>{
 //   throw new Error('Clerk API keys are missing. Check your .env file.');
 // }
 
-console.log('Publishable Key:', process.env.CLERK_PUBLISHABLE_KEY);
+// console.log('Publishable Key:', process.env.CLERK_PUBLISHABLE_KEY);

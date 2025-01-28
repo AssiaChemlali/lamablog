@@ -5,10 +5,14 @@ import { IoClose } from "react-icons/io5";
 import {links} from '../lib/index.js'
 import { Link } from "react-router";
 import Image from './Image.jsx';
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from "@clerk/clerk-react";
+
+
 const Navbar = () => {
 
   const [open,setOpen]=useState(false)
+  // const{getToken}=useAuth{}
+
   return (
     <>
     
