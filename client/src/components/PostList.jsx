@@ -1,7 +1,13 @@
 import React from 'react'
 import Image from './Image'
 import { Link } from 'react-router'
+import { useQuery } from '@tanstack/react-query'
+import axios from "axios"
 const PostList = () => {
+  const {isPending,error,data}=useQuery({
+    
+  })
+  
   return (
     <article className=' flex flex-col xl:flex-row gap-8 items-center'>
       <div className='md:hidden xl:block xl:w-1/3'>
