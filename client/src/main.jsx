@@ -6,11 +6,9 @@ import { BrowserRouter } from 'react-router'
 import { ClerkProvider } from '@clerk/clerk-react'
 
 import {
-  
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-
 
 // Create a client
 const queryClient = new QueryClient()

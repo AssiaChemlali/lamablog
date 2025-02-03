@@ -12,6 +12,9 @@ import Write from './pages/Write'
 import Register from './pages/Register'
 import SinglePost from './pages/SinglePost'
 import MainLayout from './components/MainLayout'
+
+import { ToastContainer, toast } from 'react-toast'
+
 function App() {
   return (
     <>
@@ -29,7 +32,8 @@ function App() {
             <Route path ="/about" element={<About/>}/>
           </Route>
       </Routes>
-
+      
+    < ToastContainer position='bottom-right'/>
      </>
   )
 }

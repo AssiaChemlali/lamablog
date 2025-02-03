@@ -6,6 +6,7 @@ import ReactQuill from 'react-quill'
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 
+import { ToastContainer, toast } from 'react-toast'
 const Write = () => {
   const {isLoaded,isSignedId}=useUser()
   const [value, setValue] = useState('');
@@ -24,6 +25,7 @@ const Write = () => {
     },
 
     onSuccess:(res)=>{
+      toast.success("Post has been created")
       navigate(`/${res.data.slug}`)
     }
   })
@@ -49,8 +51,10 @@ const Write = () => {
   return (
     <div className='w-full h-[calc(100vh - 64px)] md:h-[calc(100vh - 80px)] flex flex-col gap-6 '>
        <p className='text-xl font-light'>Create a New Post</p>
-       <form onSubmit={handleSubmit} className="flex flex-col gap-6 h-full">  
+       <form onSubmit={handleSubmit} className="flex flex-col gap-6 h-full"> 
+         
         <button className='bg-gray-50 shadow-md  text-gray-600 rounded-xl py-2 px-3 capitalize text-base w-max '>add a cover image</button>
+
         <input 
         className='text-gray-700 text-4xl py-2 font-semibold capitalize bg-transparent outline-none'
         type="text" 
@@ -74,8 +78,20 @@ const Write = () => {
 
         <textarea name="desc" id="" placeholder='A Short description' className='bg-white p-4  rounded-xl shadow-md'></textarea>
 
+        <div className='flex'>
+          <div className="flex flex-col gap-2 mr-2">
+            <div className="cursor-pointer">🖼️</div>
+            <div className="cursor-pointer">📹</div>
+          </div>
+          <ReactQuill 
+          theme="snow"  
+          className='flex-1 rounded-xl bg-white shadow-md h-full' 
+          value={value} 
+          onChange={setValue}
+          />
+        </div>
      
-          <ReactQuill theme="snow"  className='flex-1 rounded-xl bg-white shadow-md h-full' value={value} onChange={setValue}/>
+         
        
         
         <button 
