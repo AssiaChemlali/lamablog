@@ -1,42 +1,55 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, useParams } from 'react-router'
 import Image from '../components/Image'
 import { CATEGORIES } from '../lib'
 import Search from '../components/Search'
 import PostMenuAction from '../components/PostMenuAction'
 import Comments from '../components/Comments'
 import Categries from './Categries'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+
+const fetchPost=async(slug)=>{
+  const res=await axios.get(`${import.meta.env.VITE_API_URL}/posts/${slug}`)
+  return res.data
+}
 const SinglePost = () => {
+  const {slug}=useParams()
+  const {isPending,error,data}=useQuery({
+    queryKey:["post",slug],
+    queryFn:()=>fetchPost(slug),
+  })
+
+  if(isPending) return "loading ..."
+  if(error) return "something went wrong..." + error.message
+  if(!data) return "Post not found ..."
   return (
 
  <div className='flex  flex-col'>
    {/* image and titles */}
     <div className='flex  gap-4'>
         <div className='w-full xl:w-3/5 flex flex-col  gap-8'>
-            <h1 className='text-xl md:text-3xl  xl:text-5xl font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, dolor!</h1>
+            <h1 className='text-xl md:text-3xl  xl:text-5xl font-semibold'>{data.title}</h1>
           <div className=' flex items-center text-gray-400  gap-2 text-sm '>
               <span>written by</span>
-              <Link className='text-blue-800'>Jhon Doe</Link>
+              <Link className='text-blue-800'>{data.user.username}</Link>
               <span>on</span>
-              <Link className='text-blue-800' to='/posts?cat=web-design'>web design</Link>
-              <span>2 days ago</span>
+              <Link className='text-blue-800' to='/posts?cat=web-design'>{data.category}</Link>
+              <span>{format(data.createdAt)}</span>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem deleniti delectus ad culpa dolores temporibus ipsum dignissimos quae sed?</p>
+            <p>{data.desc}</p>
         </div>
-        <div className='hidden xl:block xl:w-2/5'>
-          <Image path="assets/postImg.jpeg" className="rounded-2xl object-cover" w="600"/>
-        </div>
+          {data.img && 
+          <div className='hidden xl:block xl:w-2/5'>
+            <Image path={data.img} className="rounded-2xl object-cover" w="600"/>
+          </div>
+          }
     </div>
 
     {/* content */}
     <div className='flex flex-col md:flex-row gap-8 my-8'>
       <div className='lg:w-4/5 lg:text-lg md:text-base flex flex-col gap-6 text-justify'>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, in recusandae a rem ipsum quos minus enim quas odit, eveniet ad, repudiandae fugit. Voluptas asperiores, accusantium aliquam esse sequi omnis illum vitae repudiandae accusamus similique quam? A, voluptatibus in. Incidunt minus cupiditate inventore odio quis a omnis cum facere deserunt.</p>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, in recusandae a rem ipsum quos minus enim quas odit, eveniet ad, repudiandae fugit. Voluptas asperiores, accusantium aliquam esse sequi omnis illum vitae repudiandae accusamus similique quam? A, voluptatibus in. Incidunt minus cupiditate inventore odio quis a omnis cum facere deserunt.</p>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, in recusandae a rem ipsum quos minus enim quas odit, eveniet ad, repudiandae fugit. Voluptas asperiores, accusantium aliquam esse sequi omnis illum vitae repudiandae accusamus similique quam? A, voluptatibus in. Incidunt minus cupiditate inventore odio quis a omnis cum facere deserunt.</p>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, in recusandae a rem ipsum quos minus enim quas odit, eveniet ad, repudiandae fugit. Voluptas asperiores, accusantium aliquam esse sequi omnis illum vitae repudiandae accusamus similique quam? A, voluptatibus in. Incidunt minus cupiditate inventore odio quis a omnis cum facere deserunt.</p>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, in recusandae a rem ipsum quos minus enim quas odit, eveniet ad, repudiandae fugit. Voluptas asperiores, accusantium aliquam esse sequi omnis illum vitae repudiandae accusamus similique quam? A, voluptatibus in. Incidunt minus cupiditate inventore odio quis a omnis cum facere deserunt.</p>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut, suscipit ab. Culpa eaque magni exercitationem nemo voluptatibus numquam eveniet, quibusdam, alias unde, accusamus harum architecto laboriosam. Soluta cum sit nulla esse architecto repellendus labore doloremque rem impedit! Ad quo eos corrupti, earum officiis hic ab vero provident, at pariatur molestias numquam sint? Ut reiciendis sint labore! Ab corporis, fugit, adipisci dolores molestias blanditiis, quam dolore saepe nemo fugiat exercitationem cumque maiores iste minus quod vero in sint repellendus a voluptate?</p>
+         {data.content}
       </div>
 
        {/* sidebar */}
@@ -45,7 +58,9 @@ const SinglePost = () => {
        <div className='flex flex-col gap-2'>
         <h5 className='font-bold capitalize'>author</h5>
         <div className='flex  items-center gap-4'>
-          <Image path="assets/userImg.jpeg" className="w-12 h-12 rounded-full object-cover" w="50" h="50"/>
+          {data.user.img && <Image path={data.user.img} className="w-12 h-12 rounded-full object-cover" w="50" h="50"/>}
+          
+
           <p className='font-semibold text-blue-800'>Jhon Doe</p>
         </div>
         <p className='text-sm text-gray-500'>Lorem ipsum dolor sit amet.</p>

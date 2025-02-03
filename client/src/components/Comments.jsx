@@ -1,7 +1,27 @@
 import React from 'react'
 
 import CommentItem from './CommentItem'
-const Comments = () => {
+import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
+
+const fetchComments=async(postId)=>{
+  const res=await axios.get(`${import.meta.env.VITE_API_URL}/comments/${postId}`)
+  return res.data
+}
+
+const Comments = ({postId}) => {
+
+  const {slug}=useParams()
+  const {isPending,error,data}=useQuery({
+    queryKey:["comments",postId],
+    queryFn:()=>fetchComments(postId),
+  })
+
+  if(isPending) return "loading ..."
+  if(error) return "something went wrong..." + error.message
+  if(!data) return "Post not found ..."
+
+
   return (
     <div className='lg:w-3/5 border flex flex-col gap-8'>
       <h5 className='font-bold capitalize mb-2 text-xl '>comments</h5>

@@ -68,8 +68,7 @@ const Home = () => {
         <h1 className='my-8 capitalize  font-bold mb-5 text-2xl text-gray-600 '>recents posts</h1>
         <div className='flex flex-col gap-12'>
          <PostList/>
-         <PostList/>
-         <PostList/>
+        
         </div>
 
       </div>
