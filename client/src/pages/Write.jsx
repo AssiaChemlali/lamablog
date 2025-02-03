@@ -40,8 +40,8 @@ const Write = () => {
     },
 
     onSuccess:(res)=>{
-      toast.success("Post has been created")
-      navigate(`/${res.data.slug}`)
+      // toast.success("Post has been created")
+      // navigate(`/${res.data.slug}`)
     }
   })
   if(!isLoaded){
@@ -71,8 +71,6 @@ const Write = () => {
     <div className='w-full h-[calc(100vh - 64px)] md:h-[calc(100vh - 80px)] flex flex-col gap-6 '>
        <p className='text-xl font-light'>Create a New Post</p>
        <form onSubmit={handleSubmit} className="flex flex-col gap-6 h-full"> 
-
-       
         <Upload type="image" setProgress={setProgress} setData={setCover}>
          <button className='bg-gray-50 shadow-md  text-gray-600 rounded-xl py-2 px-3 capitalize text-base w-max '>add a cover image</button>
         </Upload>
@@ -115,8 +113,6 @@ const Write = () => {
         </div>
      
          
-       
-        
         <button 
           disabled={mutation.isPending || (0<progress && progress<100)}
           className='bg-blue-800 text-white py-2 px-4 rounded-xl font-medium w-max disabled:bg-blue-400 disabled:cursor-not-allowed'>
