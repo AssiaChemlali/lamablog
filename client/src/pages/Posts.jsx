@@ -17,11 +17,7 @@ const Posts = () => {
 
           <div className='order-2 md:order-1 w-full  flex flex-col gap-12 lg:w-4/5'>
               <PostList/>
-              <PostList/>
-              <PostList/>
-              <PostList/>
-              <PostList/>
-              <PostList/>
+            
           </div>
 
             {/* sidebar  */}
