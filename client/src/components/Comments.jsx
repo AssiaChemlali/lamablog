@@ -19,7 +19,7 @@ const Comments = ({postId}) => {
 
   if(isPending) return "loading ..."
   if(error) return "something went wrong..." + error.message
-  if(!data) return "Post not found ..."
+  if(!data) return "comments not found ..."
 
 
   return (
@@ -30,12 +30,11 @@ const Comments = ({postId}) => {
         <button type="submit" className='bg-blue-800 text-white py-2 px-4  rounded-xl font-semibold'>send</button>
       </form>
 
-      <CommentItem/>
-      <CommentItem/>
-      <CommentItem/>
-      <CommentItem/>
-      <CommentItem/>
-      <CommentItem/>
+      {data.map(comment=>(
+        <CommentItem key={comment._id} comment={comment}/>
+      ))}
+      
+      
       
     </div>
   )

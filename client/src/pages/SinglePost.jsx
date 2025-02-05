@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, useParams } from 'react-router'
 import Image from '../components/Image'
-import { CATEGORIES } from '../lib'
 import Search from '../components/Search'
 import PostMenuAction from '../components/PostMenuAction'
 import Comments from '../components/Comments'
@@ -59,8 +58,6 @@ const SinglePost = () => {
         <h5 className='font-bold capitalize'>author</h5>
         <div className='flex  items-center gap-4'>
           {data.user.img && <Image path={data.user.img} className="w-12 h-12 rounded-full object-cover" w="50" h="50"/>}
-          
-
           <p className='font-semibold text-blue-800'>Jhon Doe</p>
         </div>
         <p className='text-sm text-gray-500'>Lorem ipsum dolor sit amet.</p>
@@ -100,7 +97,7 @@ const SinglePost = () => {
       </div>
     </div>
     {/* comments */}
-    <Comments/>
+    <Comments postId={data._id}/>
 
  </div>
 
